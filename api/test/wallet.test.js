@@ -19,7 +19,7 @@ describe('Wallet API Tests', () => {
     it('should get wallet balance', (done) => {
         request(app)
             .get('/api/v1/wallets/balance')
-            .query({ walletID: '35ba7ec3-f2e7-5033-b6e1-014c7c24142c' })
+            .query({ walletID: '8855cb91-e040-518b-920f-5220557fb2f9' })
             .end((err, res) => {
                 if (err) return done(err);
                 expect(res.status).to.equal(200);

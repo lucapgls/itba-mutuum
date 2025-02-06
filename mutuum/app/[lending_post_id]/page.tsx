@@ -229,7 +229,8 @@ const LoanDetailsScreen = ({ params }: Requirement) => {
 				return;
 			}
 
-			await askForLoan(currentUser.userId, lending_post_id as string);
+			const response = await askForLoan(currentUser.userId, lending_post_id as string);
+			console.log(response);
 
 			Alert.alert(
 				"Éxito",

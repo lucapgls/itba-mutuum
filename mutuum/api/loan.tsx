@@ -150,6 +150,7 @@ export const checkActiveLoanStatus = async (userId: string) => {
     }
 
     const data = await response.json();
+    console.log(data);  
     return {
       hasActiveLoans: data.hasActiveLoans,
       hasOverduePayments: data.hasOverduePayments
