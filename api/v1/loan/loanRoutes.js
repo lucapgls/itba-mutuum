@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
+    console.log('Received body:', req.body);
     const { lendingPostId, borrowerId, loanAmount } = req.body;
 
     if (!lendingPostId || !borrowerId || !loanAmount) {

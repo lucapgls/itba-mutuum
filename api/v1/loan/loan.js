@@ -66,7 +66,7 @@ export const createLoan = async (lendingPostId, borrowerId, loanAmount) => {
        .insert([{ 
          lending_post_id: lendingPostId, 
          borrower_id: borrowerId, 
-         amount: loanAmount, 
+         loan_amount: loanAmount, 
          created_at: createdAt,
          fees_paid: 0, 
          is_paid: false,
