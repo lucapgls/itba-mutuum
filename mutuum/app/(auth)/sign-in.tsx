@@ -15,7 +15,7 @@ import CustomTextInput from "../../components/CustomTextInput";
 import theme from '@theme/theme';
 
 import API_BASE_URL from "../../api/api_temp";
-import UserStore from "store/UserStore";
+import UserStore from "../../store/UserStore";
 
 // Sign in the user with email and password
 export const signInUser = async (email: string, password: string) => {

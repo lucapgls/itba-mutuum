@@ -18,8 +18,8 @@ import { router } from "expo-router";
 import API_BASE_URL from "../api/api_temp";
 import theme from "@theme/theme";
 import { createLendingPostAndRequirements } from "api/lendingPost";
-import { addLoan } from "store/LendingPostStore";
-import UserStore from "store/UserStore";
+import { addLoan } from "../store/LendingPostStore";
+import UserStore from "../store/UserStore";
 
 
 const CreateLoan: React.FC = () => {

@@ -15,7 +15,7 @@ import { router, Link } from "expo-router";
 import CustomTextInput from "../../components/CustomTextInput";
 import API_BASE_URL from "../../api/api_temp";
 import theme from "@theme/theme";
-import UserStore from "store/UserStore";
+import UserStore from "../../store/UserStore";
 
 export const signUpUser = async (email: string, password: string, display_name: string) => {
 	try {

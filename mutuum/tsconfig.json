@@ -8,6 +8,11 @@
       "@components/*": ["components/*"],
       "@screens/*": ["screens/*"],
       "@theme/*": ["theme/*"]
-    }
+    },
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }

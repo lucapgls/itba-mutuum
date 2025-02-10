@@ -1,4 +1,4 @@
-import { fetchLendingPosts, fetchLendingPostRequirements, createLendingPostAndRequirements, fetchLendingPostsByUserId, fetchLendingPostByLendingPostId } from "api/lendingPost";
+import { fetchLendingPosts, fetchLendingPostRequirements, createLendingPostAndRequirements, fetchLendingPostsByUserId, fetchLendingPostByLendingPostId } from "../api/lendingPost";
 
 let loansArray: Array<any> = [];
 

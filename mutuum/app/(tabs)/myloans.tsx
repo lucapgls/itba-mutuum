@@ -104,7 +104,6 @@ const MyLoans = () => {
         <View style={styles.safeArea}>
             <View style={styles.container}>
                 <View style={{ height: 50 }} />
-
                 <View
                     style={{
                         flexDirection: "row",
@@ -128,11 +127,16 @@ const MyLoans = () => {
                 </View>
             </View>
 
-            <ScrollView contentContainerStyle={styles.scrollContainer}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-                <RefreshControl refreshing={isLoading} onRefresh={fetchData} />
-              }>
+            <ScrollView 
+                contentContainerStyle={[
+                    styles.scrollContainer,
+                    !isLoading && loans.length === 0 && styles.emptyStateContainer
+                ]}
+                showsVerticalScrollIndicator={false}
+                refreshControl={
+                    <RefreshControl refreshing={isLoading} onRefresh={fetchData} />
+                }
+            >
                 <Text style={styles.title}>Mis préstamos</Text>
 
                 <View style={{ height: 10 }} />
@@ -140,35 +144,43 @@ const MyLoans = () => {
                 {isLoading ? (
                     Array.from({ length: 1 }).map((_, index) => (
                         <View key={index}>
-                          <View style={[theme.shadowIOS, theme.shadowAndroid]}>
-                            <Skeleton
-                              height={100}
-                              width={"100%"}
-                              colorMode="light"
-                              radius={20}
-                            />
-                          </View>
-                          <View style={{ height: 16 }} />
-                        </View>))
-                ) : (
-                loans.map((loan) => (
-                    <View style={styles.card} key={loan.id}>
-                        <LoanCard
-                            lending_post_id={loan.id}
-                            lender_name={lenders[loan.lender_id] || "Lender Name"}
-                            id={loan.lender_id}
-                            currency={loan.currency ?? "USD"}
-                            amount={loan.initial_amount ?? 0}
-                            interest={loan.interest ?? 0}
-                            term={loan.quotas ?? 0}
-                            requirements={loan.requirements ?? []}
-                            onPress={() =>
-                                console.log(`Pressed loan ${loan.id}`)
-                            }
-                        />
+                            <View style={[theme.shadowIOS, theme.shadowAndroid]}>
+                                <Skeleton
+                                    height={100}
+                                    width={"100%"}
+                                    colorMode="light"
+                                    radius={20}
+                                />
+                            </View>
+                            <View style={{ height: 16 }} />
+                        </View>
+                    ))
+                ) : loans.length === 0 ? (
+                    <View style={styles.emptyState}>
+                        <Text style={styles.emptyStateText}>
+                            No tenés ningún préstamo todavía, ¡crea uno ahora!
+                        </Text>
                     </View>
-                ))
-            )}
+                ) : (
+                    loans.map((loan) => (
+                        <View style={styles.card} key={loan.id}>
+                            <LoanCard
+                                lending_post_id={loan.id}
+                                lender_name={lenders[loan.lender_id] || "Lender Name"}
+                                id={loan.lender_id}
+                                currency={loan.currency ?? "USD"}
+                                amount={loan.initial_amount ?? 0}
+                                interest={loan.interest ?? 0}
+                                term={loan.quotas ?? 0}
+                                requirements={loan.requirements ?? []}
+                                onPress={() =>
+                                    console.log(`Pressed loan ${loan.id}`)
+                                }
+                            />
+                        </View>
+                    ))
+                )}
+                
                 <View style={{ height: 8 }} />
                 <CustomButton
                     text="Crear préstamo"
@@ -237,7 +249,6 @@ const styles = StyleSheet.create({
     searchSection: {
         flexDirection: "row",
         alignItems: "center",
-
         borderRadius: 10,
         paddingHorizontal: 10,
         width: "100%",
@@ -260,7 +271,7 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     card: {
-        marginBottom: 0, // Fixed space between cards
+        marginBottom: 0,
     },
     button: {
         backgroundColor: theme.colors.primary,
@@ -279,7 +290,6 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         height: 40,
         width: 40,
-
         padding: 10,
     },
     modalContainer: {
@@ -306,7 +316,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
-
     modalOptionText: {
         fontSize: 16,
     },
@@ -318,6 +327,22 @@ const styles = StyleSheet.create({
     picker: {
         width: "100%",
         marginBottom: 0,
+    },
+    emptyStateContainer: {
+        flexGrow: 1,
+        justifyContent: 'center',
+    },
+    emptyState: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 20,
+    },
+    emptyStateText: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 20,
+        color: theme.colors.textBlack,
     },
 });
 
