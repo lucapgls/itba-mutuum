@@ -70,7 +70,7 @@ export const createLoan = async (lendingPostId, borrowerId, loanAmount) => {
          created_at: createdAt,
          fees_paid: 0, 
          is_paid: false,
-      }]);
+      }]).select();
  
      if (error) {
        console.error('Error creating loan:', error.message);
