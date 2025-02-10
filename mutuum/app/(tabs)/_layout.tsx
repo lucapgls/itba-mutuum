@@ -33,7 +33,7 @@ const TabIcon = ({
 				resizeMode="contain"
 				style={[styles.icon, { tintColor: color }]}
 			/>
-			<Text style={[styles.text, { color: color }]}>{name}</Text>
+			{/* <Text style={[styles.text, { color: color }]}>{name}</Text> */}
 		</View>
 	);
 };
@@ -50,7 +50,8 @@ const TabsLayout = () => {
 				screenOptions={{
 					tabBarActiveTintColor: theme.colors.primary,
 					tabBarInactiveTintColor: theme.colors.tabInactive,
-					tabBarShowLabel: false,
+					tabBarShowLabel: true,
+
 					tabBarStyle: {
 						backgroundColor: "#FFF",
 						height: tabBarHeight,
@@ -143,9 +144,11 @@ const TabsLayout = () => {
 
 const styles = StyleSheet.create({
 	container: {
+		marginTop: 10,
 		alignItems: "center",
 		justifyContent: "center",
 		gap: 2,
+		marginBottom: 10,
 	},
 	icon: {
 		width: 32, // Tailwind's w-6 is 24px
